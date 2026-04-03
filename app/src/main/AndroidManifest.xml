@@ -12,7 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rafifatom">
         <activity
+            android:name=".Pertemuan3.WelcomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+
+            android:exported="false" />
+
+        <activity
+            android:name=".Pertemuan3.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

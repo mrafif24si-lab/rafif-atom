@@ -33,6 +33,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    // TAHAP PENTING: Tambahkan ini untuk mengaktifkan ViewBinding
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
