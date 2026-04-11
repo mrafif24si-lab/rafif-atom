@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            android:text="Kalkulator Bangun Datar &amp; Ruang"
+            android:textAlignment="center"
+            android:textColor="#333333"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="1. Luas Segitiga"
+            android:textColor="#0056B3"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputAlasSegitiga"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="#E0E0E0"
+            android:hint=" Masukkan Alas (cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="12dp" />
+
+        <EditText
+            android:id="@+id/inputTinggiSegitiga"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="#E0E0E0"
+            android:hint=" Masukkan Tinggi (cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="12dp" />
+
+        <Button
+            android:id="@+id/btnHitungSegitiga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Hitung Luas Segitiga" />
+
+        <TextView
+            android:id="@+id/tvHasilSegitiga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="Hasil: 0"
+            android:textAlignment="center"
+            android:textColor="#D32F2F"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="2. Volume Balok"
+            android:textColor="#0056B3"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputPanjangBalok"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="#E0E0E0"
+            android:hint=" Masukkan Panjang (cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="12dp" />
+
+        <EditText
+            android:id="@+id/inputLebarBalok"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="#E0E0E0"
+            android:hint=" Masukkan Lebar (cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="12dp" />
+
+        <EditText
+            android:id="@+id/inputTinggiBalok"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:background="#E0E0E0"
+            android:hint=" Masukkan Tinggi (cm)"
+            android:inputType="numberDecimal"
+            android:paddingStart="12dp" />
+
+        <Button
+            android:id="@+id/btnHitungBalok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Hitung Volume Balok" />
+
+        <TextView
+            android:id="@+id/tvHasilBalok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Hasil: 0"
+            android:textAlignment="center"
+            android:textColor="#D32F2F"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

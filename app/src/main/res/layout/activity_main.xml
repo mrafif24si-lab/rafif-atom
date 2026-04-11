@@ -1,132 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:fitsSystemWindows="true"
-    android:background="#FAFAFA">
+    android:background="@drawable/bg_dashboard">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
-            android:text="Kalkulator Bangun Datar &amp; Ruang"
-            android:textAlignment="center"
-            android:textColor="#333333"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore Your Recipe"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/poppins_bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Healthy Eating Healthy Body"
+                    android:textColor="#94A3B8"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#33FFFFFF">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo_appp"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"/>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnMenuKalkulator"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#EFF6FF">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_edit"
+                        app:tint="#3B82F6" />
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calculator"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnMenuCustom1"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toTopOf="@id/btnMenuKalkulator"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F0F9FF">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_send"
+                        app:tint="#0EA5E9" />
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Started"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18sp"
+                    android:textColor="#1E293B" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnMenuCustom2"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/btnMenuKalkulator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#EEF2FF">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        app:tint="#6366F1" />
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Profile"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="#F59E0B" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/accent_red_main"
+            app:layout_constraintTop_toTopOf="@id/btnMenuCustom2"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#33FFFFFF">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_lock_power_off"
+                        app:tint="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="1. Luas Segitiga"
-            android:textColor="#0056B3"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-        <EditText
-            android:id="@+id/inputAlasSegitiga"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:background="#E0E0E0"
-            android:hint=" Masukkan Alas (cm)"
-            android:inputType="numberDecimal"
-            android:paddingStart="12dp" />
-
-        <EditText
-            android:id="@+id/inputTinggiSegitiga"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:background="#E0E0E0"
-            android:hint=" Masukkan Tinggi (cm)"
-            android:inputType="numberDecimal"
-            android:paddingStart="12dp" />
-
-        <Button
-            android:id="@+id/btnHitungSegitiga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Hitung Luas Segitiga" />
-
-        <TextView
-            android:id="@+id/tvHasilSegitiga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:text="Hasil: 0"
-            android:textAlignment="center"
-            android:textColor="#D32F2F"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="2. Volume Balok"
-            android:textColor="#0056B3"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/inputPanjangBalok"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:background="#E0E0E0"
-            android:hint=" Masukkan Panjang (cm)"
-            android:inputType="numberDecimal"
-            android:paddingStart="12dp" />
-
-        <EditText
-            android:id="@+id/inputLebarBalok"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:background="#E0E0E0"
-            android:hint=" Masukkan Lebar (cm)"
-            android:inputType="numberDecimal"
-            android:paddingStart="12dp" />
-
-        <EditText
-            android:id="@+id/inputTinggiBalok"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:background="#E0E0E0"
-            android:hint=" Masukkan Tinggi (cm)"
-            android:inputType="numberDecimal"
-            android:paddingStart="12dp" />
-
-        <Button
-            android:id="@+id/btnHitungBalok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Hitung Volume Balok" />
-
-        <TextView
-            android:id="@+id/tvHasilBalok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Hasil: 0"
-            android:textAlignment="center"
-            android:textColor="#D32F2F"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
