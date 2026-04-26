@@ -1,12 +1,14 @@
 package com.example.rafif_atom.Pertemuan2
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rafif_atom.R
@@ -17,20 +19,25 @@ class KalkulatorActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_kalkulator)
 
-        // Deklarasi Komponen Segitiga
+        // Setup Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarKalkulator)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         val inputAlasSegitiga = findViewById<EditText>(R.id.inputAlasSegitiga)
         val inputTinggiSegitiga = findViewById<EditText>(R.id.inputTinggiSegitiga)
         val btnHitungSegitiga = findViewById<Button>(R.id.btnHitungSegitiga)
         val tvHasilSegitiga = findViewById<TextView>(R.id.tvHasilSegitiga)
 
-        // Deklarasi Komponen Balok
         val inputPanjangBalok = findViewById<EditText>(R.id.inputPanjangBalok)
         val inputLebarBalok = findViewById<EditText>(R.id.inputLebarBalok)
         val inputTinggiBalok = findViewById<EditText>(R.id.inputTinggiBalok)
         val btnHitungBalok = findViewById<Button>(R.id.btnHitungBalok)
         val tvHasilBalok = findViewById<TextView>(R.id.tvHasilBalok)
 
-        // Logika Tombol Hitung Segitiga
         btnHitungSegitiga.setOnClickListener {
             val alasStr = inputAlasSegitiga.text.toString()
             val tinggiStr = inputTinggiSegitiga.text.toString()
@@ -45,7 +52,6 @@ class KalkulatorActivity : AppCompatActivity() {
             }
         }
 
-        // Logika Tombol Hitung Balok
         btnHitungBalok.setOnClickListener {
             val panjangStr = inputPanjangBalok.text.toString()
             val lebarStr = inputLebarBalok.text.toString()
@@ -67,5 +73,13 @@ class KalkulatorActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

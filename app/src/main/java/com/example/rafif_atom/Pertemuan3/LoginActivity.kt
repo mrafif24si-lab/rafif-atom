@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit // Penting: Import ini agar fungsi edit{} berjalan
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.rafif_atom.MainActivity
 import com.example.rafif_atom.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -19,15 +21,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mengatur padding untuk insets DAN mengembalikan jarak aman desain
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            // Konversi nilai 24dp dan 32dp ke ukuran Pixel layar HP
             val sidePadding = (24 * resources.displayMetrics.density).toInt()
             val bottomPadding = (32 * resources.displayMetrics.density).toInt()
-
-            // Tambahkan jarak aman ke dalam insets system bar
             v.setPadding(
                 systemBars.left + sidePadding,
                 systemBars.top + sidePadding,
@@ -38,14 +35,18 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            // 1. Buat Intent untuk pindah ke WelcomeActivity
-            val intent = Intent(this, WelcomeActivity::class.java)
+            // 1. Simpan sesi login ke SharedPreferences menggunakan KTX (edit {})
+            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+            sharedPref.edit {
+                putBoolean("isLogin", true)
+                putString("username", "Rafif") // Menyimpan data user
+            }
 
-            // 2. Jalankan Intent
+            // 2. Arahkan langsung ke MainActivity
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
-            // 3. (PENTING) Tutup LoginActivity agar tidak bisa di-"Back" oleh user
-            // Ini membuat alur aplikasi terasa lebih profesional
+            // 3. Tutup LoginActivity
             finish()
         }
     }

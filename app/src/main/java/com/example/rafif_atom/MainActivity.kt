@@ -3,11 +3,13 @@ package com.example.rafif_atom
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit // Penting: Import ini untuk fungsi edit{}
 import com.example.rafif_atom.Pertemuan2.KalkulatorActivity
 import com.example.rafif_atom.Pertemuan3.LoginActivity
 import com.example.rafif_atom.Pertemuan4.GetStartedActivity
 import com.example.rafif_atom.Pertemuan4.ProfileActivity
-import com.google.android.material.card.MaterialCardView // Import CardView
+import com.example.rafif_atom.Pertemuan5.WebViewActivity
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -16,48 +18,47 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Ubah dari Button ke MaterialCardView agar sesuai dengan XML terbaru
         val btnKalkulator = findViewById<MaterialCardView>(R.id.btnMenuKalkulator)
         val btnCustom1 = findViewById<MaterialCardView>(R.id.btnMenuCustom1)
         val btnCustom2 = findViewById<MaterialCardView>(R.id.btnMenuCustom2)
+        val btnBinaDesa = findViewById<MaterialCardView>(R.id.btnMenuBinaDesa)
         val btnLogout = findViewById<MaterialCardView>(R.id.btnLogout)
 
-        // 1. Ke Halaman Kalkulator
         btnKalkulator.setOnClickListener {
-            val intent = Intent(this, KalkulatorActivity::class.java)
-            // Mengirim data "Titipan" (Intent Extra)
-            intent.putExtra("JUDUL", "Calculator Tools")
-            intent.putExtra("DESKRIPSI", "Hitung rumus bangun ruang dengan mudah")
-            startActivity(intent)
+            startActivity(Intent(this, KalkulatorActivity::class.java))
         }
 
-        // 2. Ke Halaman Get Started (Custom 1)
         btnCustom1.setOnClickListener {
-            val intent = Intent(this, GetStartedActivity::class.java)
-            intent.putExtra("JUDUL", "Let's Cooking!")
-            intent.putExtra("DESKRIPSI", "Pelajari resep makanan sehat di sini.")
-            startActivity(intent)
+            startActivity(Intent(this, GetStartedActivity::class.java))
         }
 
-        // 3. Ke Halaman Profile (Custom 2)
         btnCustom2.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra("JUDUL", "Account Info")
-            intent.putExtra("DESKRIPSI", "Detail profil dan riwayat memasak")
-            startActivity(intent)
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // 4. Logout dengan Dialog Konfirmasi
+        btnBinaDesa.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java))
+        }
+
+        // 5. Logout dan Hapus Sesi SharedPreferences
         btnLogout.setOnClickListener { view ->
             MaterialAlertDialogBuilder(this)
                 .setTitle("Sign Out")
                 .setMessage("Apakah Anda yakin ingin keluar dari aplikasi?")
-                .setPositiveButton("Logout") { _, _ ->
+                .setPositiveButton("Logout") { dialog, _ ->
+                    dialog.dismiss()
+
+                    // --- MENGHAPUS SESI LOGIN MENGGUNAKAN KTX ---
+                    val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                    sharedPref.edit {
+                        clear() // Hapus semua data (isLogin & username)
+                    }
+                    // ---------------------------------------------
+
                     val intent = Intent(this, LoginActivity::class.java)
-                    // FLAG ini menghapus semua history halaman, sangat aman!
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-                    finish() // Memastikan MainActivity benar-benar dihancurkan
+                    finish()
                 }
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()

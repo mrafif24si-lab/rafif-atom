@@ -1,9 +1,11 @@
 package com.example.rafif_atom.Pertemuan4
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.rafif_atom.R
 
 class GetStartedActivity : AppCompatActivity() {
@@ -11,20 +13,26 @@ class GetStartedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_started)
 
-        // 1. Inisialisasi ulang View (Gunakan ID yang ada di activity_get_started.xml)
-        val tvJudul = findViewById<TextView>(R.id.textView3) // Sesuaikan ID-nya
+        // Setup Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarGetStarted)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         val btnStart = findViewById<Button>(R.id.btnGoToMain)
-
-        // 2. Menangkap data dari Intent
-//        val judul = intent.getStringExtra("JUDUL")
-//        val deskripsi = intent.getStringExtra("DESKRIPSI")
-
-        // 3. Tampilkan kembali ke layar
-//        tvJudul.text = judul
-        // Jika ada TextView deskripsi, tambahkan juga di sini
 
         btnStart.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -6,16 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="32dp"
     tools:context=".Pertemuan3.LoginActivity">
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_app"
+        android:src="@drawable/umkm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/welcome_back"
         android:textColor="@color/text_primary"
@@ -49,8 +49,8 @@
     <EditText
         android:id="@+id/inputEmail"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/bg_input_rounded"
         android:drawableStart="@android:drawable/ic_dialog_email"
         android:drawablePadding="12dp"
@@ -65,8 +65,8 @@
     <EditText
         android:id="@+id/inputPassword"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/bg_input_rounded"
         android:drawableStart="@android:drawable/ic_lock_idle_lock"
         android:drawablePadding="12dp"
@@ -82,7 +82,7 @@
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/forgot_password"
         android:textColor="@color/text_primary"
@@ -93,8 +93,8 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/button_green"
         android:fontFamily="@font/poppins_bold"
         android:insetTop="0dp"
@@ -110,7 +110,7 @@
         android:id="@+id/tvOr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/or_continue_with"
         android:textColor="@color/text_secondary"
@@ -122,8 +122,8 @@
     <Button
         android:id="@+id/btnGoogle"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/button_red"
         android:fontFamily="@font/poppins_bold"
         android:insetTop="0dp"
@@ -136,13 +136,14 @@
         app:layout_constraintTop_toBottomOf="@id/tvOr" />
 
     <LinearLayout
+        android:id="@+id/layoutSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogle">
 
         <TextView
             android:layout_width="wrap_content"
