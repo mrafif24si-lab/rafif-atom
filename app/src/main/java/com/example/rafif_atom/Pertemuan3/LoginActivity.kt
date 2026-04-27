@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit // Penting: Import ini agar fungsi edit{} berjalan
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.rafif_atom.MainActivity
+// Import diubah dari MainActivity menjadi BaseActivity
+import com.example.rafif_atom.BaseActivity
 import com.example.rafif_atom.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -35,18 +36,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            // 1. Simpan sesi login ke SharedPreferences menggunakan KTX (edit {})
             val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
             sharedPref.edit {
                 putBoolean("isLogin", true)
-                putString("username", "Rafif") // Menyimpan data user
+                putString("username", "Rafif")
             }
 
-            // 2. Arahkan langsung ke MainActivity
-            val intent = Intent(this, MainActivity::class.java)
+            // Arahkan langsung ke BaseActivity
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
-
-            // 3. Tutup LoginActivity
             finish()
         }
     }

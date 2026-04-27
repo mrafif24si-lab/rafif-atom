@@ -11,8 +11,6 @@ import kotlinx.coroutines.launch
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Pastikan kamu memiliki file layout activity_splash_screen.xml
         setContentView(R.layout.activity_splash_screen)
 
         // Jalankan coroutine untuk delay 2 detik
@@ -24,8 +22,8 @@ class SplashScreenActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
             if (isLogin) {
-                // Jika sudah login, langsung ke MainActivity
-                val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+                // Jika sudah login, langsung ke BaseActivity (bukan MainActivity lagi)
+                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
                 startActivity(intent)
             } else {
                 // Jika belum login, ke LoginActivity
@@ -33,7 +31,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            // Hancurkan halaman splash agar tidak bisa kembali dengan tombol back
+            // Hancurkan halaman splash
             finish()
         }
     }
