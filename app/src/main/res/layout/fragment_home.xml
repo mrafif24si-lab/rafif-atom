@@ -1,58 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F5B759">
+    android:background="#F5B759"> <!-- Warna dasar abu-abu terang agar form menonjol -->
 
+    <!-- 1. Background Melengkung (Wave) sesuai arahan dosen -->
+    <View
+        android:id="@+id/background_header"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_header_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 2. Toolbar Transparan -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#E69527"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@android:color/white" />
 
+    <!-- 3. Konten Utama (Header Teks & GridLayout) -->
+    <!-- Kita batasi top konten tepat di bawah Toolbar agar tidak tertutup -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
+        <!-- HEADER TEKS -->
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="24dp"> <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginBottom="24dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Explore Your Recipe"
-                android:textColor="@color/white"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Healthy Eating Healthy Body"
-                android:textColor="#FFF3E0"
-                android:textSize="14sp" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore Your Recipe"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Healthy Eating Healthy Body"
+                    android:textColor="#FFF3E0"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="8dp"
+                app:cardElevation="0dp"
                 app:strokeWidth="2dp"
                 app:strokeColor="#4DFFFFFF"
                 app:cardBackgroundColor="#FFFFFF">
@@ -65,203 +83,242 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <LinearLayout
+        <!-- IMPLEMENTASI GRIDLAYOUT DARI DOSEN -->
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:columnCount="2"
+            android:rowCount="3">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Menu 1: Kalkulator -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuKalkulator"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp"
-                android:baselineAligned="false">
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnMenuKalkulator"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#ECFEFF">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Calculator"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            app:cardCornerRadius="28dp"
-                            app:cardElevation="0dp"
-                            app:cardBackgroundColor="#ECFEFF">
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_edit"
-                                app:tint="#06B6D4" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Calculator"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="#1F2937" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnMenuCustom1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="#FFFFFF">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            app:cardCornerRadius="28dp"
-                            app:cardElevation="0dp"
-                            app:cardBackgroundColor="#ECFEFF">
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_send"
-                                app:tint="#06B6D4" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Get Started"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="#1F2937" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Menu 2: Get Started -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuCustom1"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnMenuCustom2"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#ECFEFF">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_send"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Get Started"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            app:cardCornerRadius="28dp"
-                            app:cardElevation="0dp"
-                            app:cardBackgroundColor="#ECFEFF">
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_myplaces"
-                                app:tint="#06B6D4" />
-                        </com.google.android.material.card.MaterialCardView>
+            <!-- Menu 3: Account -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuCustom2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Account"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="#1F2937" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnMenuBinaDesa"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#ECFEFF">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Account"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            app:cardCornerRadius="28dp"
-                            app:cardElevation="0dp"
-                            app:cardBackgroundColor="#ECFEFF">
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_search"
-                                app:tint="#06B6D4" />
-                        </com.google.android.material.card.MaterialCardView>
+            <!-- Menu 4: Web UMKM -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuBinaDesa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Web UMKM"
-                            android:layout_marginTop="12dp"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="#1F2937" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#ECFEFF">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_search"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Web UMKM"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- MENU 5: Pusat Bantuan -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuBantuan"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_columnSpan="2"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="0dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardBackgroundColor="#ECFEFF">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_dialog_info"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pusat Bantuan"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+        <!-- TOMBOL LOGOUT -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
             app:cardBackgroundColor="#EF4444">
@@ -290,4 +347,5 @@
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

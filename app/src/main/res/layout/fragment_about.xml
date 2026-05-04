@@ -58,7 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sajian Marinasi"
+                        android:text="UMKM"
                         android:textColor="#FFFFFF"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -67,7 +67,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nusantara"
+                        android:text="Bina Desa"
                         android:textColor="#FFECB3"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Warisan Rasa, Kebanggaan Desa"
+                        android:text="Lestarikan Produk Kebanggaan Indonesia"
                         android:textColor="#FFFFFF"
                         android:textSize="13sp"
                         android:fontFamily="sans-serif-light"/>
@@ -118,7 +118,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bermula dari semangat program Bina Desa di Kuala Kampar, kami meramu kekayaan laut nusantara dengan teknik marinasi modern. Sajian Marinasi Nusantara hadir bukan sekadar produk, melainkan jembatan ekonomi bagi para nelayan lokal untuk mengenalkan cita rasa desa ke pasar yang lebih luas."
+                        android:text="UMKM Store didirikan pada tahun 2023 dengan tujuan mulia untuk memberdayakan para pelaku Usaha Mikro, Kecil, dan Menengah di seluruh Indonesia. Berawal dari keprihatinan terhadap potensi besar UMKM lokal yang belum tergarap secara optimal di era digital.
+                        Dalam perjalanannya, kami telah membantu ratusan UMKM untuk go digital dan menjangkau pasar yang lebih luas. Setiap produk yang dijual di platform kami memiliki cerita dan nilai budaya yang unik dari masing-masing daerah.."
                         android:textColor="#4B5563"
                         android:lineSpacingExtra="6dp"
                         android:textSize="14sp" />
@@ -162,7 +163,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Pionir produk marinasi lokal berkualitas nasional."
+                            android:text="Pionir produk lokal berkualitas nasional."
                             android:textSize="12sp"
                             android:textColor="#155E75"
                             android:layout_marginTop="4dp"/>
@@ -197,7 +198,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Menjaga keaslian bumbu &amp; memberdayakan ekonomi nelayan."
+                            android:text="Menjaga keaslian produk &amp; memberdayakan ekonomi UMKM."
                             android:textSize="12sp"
                             android:textColor="#7C2D12"
                             android:layout_marginTop="4dp"/>

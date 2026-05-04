@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+// Pastikan import ini sesuai dengan folder tempat kamu membuat BantuanActivity
+import com.example.rafif_atom.BantuanActivity
 import com.example.rafif_atom.Pertemuan2.KalkulatorActivity
 import com.example.rafif_atom.Pertemuan3.LoginActivity
 import com.example.rafif_atom.Pertemuan4.GetStartedActivity
@@ -20,14 +22,12 @@ import com.google.android.material.snackbar.Snackbar
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment using ViewBinding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
         (requireActivity() as androidx.appcompat.app.AppCompatActivity).supportActionBar?.apply {
             title = "Home"
         }
+
         // 1. Navigasi ke Kalkulator
         binding.btnMenuKalkulator.setOnClickListener {
             startActivity(Intent(requireContext(), KalkulatorActivity::class.java))
@@ -49,7 +50,7 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), GetStartedActivity::class.java))
         }
 
-        // 3. Navigasi ke Profile Activity (Tugas lama)
+        // 3. Navigasi ke Profile Activity
         binding.btnMenuCustom2.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileActivity::class.java))
         }
@@ -59,7 +60,12 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        // 5. Logout dan Hapus Sesi SharedPreferences
+        // 5. TUGAS BARU: Navigasi ke Pusat Bantuan (ListView dll)
+        binding.btnMenuBantuan.setOnClickListener {
+            startActivity(Intent(requireContext(), BantuanActivity::class.java))
+        }
+
+        // 6. Logout dan Hapus Sesi SharedPreferences
         binding.btnLogout.setOnClickListener { viewLogout ->
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Sign Out")
@@ -67,17 +73,15 @@ class HomeFragment : Fragment() {
                 .setPositiveButton("Logout") { dialog, _ ->
                     dialog.dismiss()
 
-                    // --- MENGHAPUS SESI LOGIN MENGGUNAKAN KTX ---
                     val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
                     sharedPref.edit {
-                        clear() // Hapus semua data (isLogin & username)
+                        clear()
                     }
-                    // ---------------------------------------------
 
                     val intent = Intent(requireContext(), LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-                    requireActivity().finish() // Hancurkan Activity host (BaseActivity)
+                    requireActivity().finish()
                 }
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()
@@ -89,6 +93,6 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Mencegah memory leak
+        _binding = null
     }
 }
