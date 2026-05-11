@@ -8,11 +8,17 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/umkm"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/umkm"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rafifatom">
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InputEmailActivity"
+            android:exported="false" />
         <activity
             android:name=".BantuanActivity"
             android:exported="false" />
