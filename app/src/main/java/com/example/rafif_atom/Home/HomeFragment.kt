@@ -15,6 +15,8 @@ import com.example.rafif_atom.Pertemuan3.LoginActivity
 import com.example.rafif_atom.Pertemuan4.GetStartedActivity
 import com.example.rafif_atom.Pertemuan4.ProfileActivity
 import com.example.rafif_atom.Pertemuan5.WebViewActivity
+// IMPORT BARU: Pastikan package ini sesuai dengan lokasi file UmkmCatalogActivity Anda
+import com.example.rafif_atom.Pertemuan10.UmkmCatalogActivity
 import com.example.rafif_atom.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -60,12 +62,19 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        // 5. TUGAS BARU: Navigasi ke Pusat Bantuan (ListView dll)
+        // 5. Navigasi ke Pusat Bantuan (ListView dll)
         binding.btnMenuBantuan.setOnClickListener {
             startActivity(Intent(requireContext(), BantuanActivity::class.java))
         }
 
-        // 6. Logout dan Hapus Sesi SharedPreferences
+        // ==========================================
+        // 6. TUGAS BARU: Navigasi ke Produk UMKM (Pertemuan 10)
+        // ==========================================
+        binding.btnMenuProdukUmkm.setOnClickListener {
+            startActivity(Intent(requireContext(), UmkmCatalogActivity::class.java))
+        }
+
+        // 7. Logout dan Hapus Sesi SharedPreferences
         binding.btnLogout.setOnClickListener { viewLogout ->
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Sign Out")
