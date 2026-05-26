@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rafifatom">
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="false" />
@@ -49,6 +50,15 @@
         <activity
             android:name=".Pertemuan3.LoginActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".InputEmailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
