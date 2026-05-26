@@ -14,13 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rafifatom">
         <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".BantuanActivity"
             android:exported="false" />
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".onboarding.OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,7 +18,7 @@ class BantuanActivity : AppCompatActivity() {
         val btnKirim = findViewById<MaterialButton>(R.id.btnKirimPertanyaan)
         val chipGroup = findViewById<ChipGroup>(R.id.chipGroupFilter)
 
-        // 1. Siapkan Data Dummy khas Bina Desa UMKM
+        //  Data Dummy  Bina Desa UMKM
         val listData = ArrayList<HashMap<String, String>>()
 
         val item1 = HashMap<String, String>()
@@ -36,11 +36,11 @@ class BantuanActivity : AppCompatActivity() {
         item3["deskripsi"] = "Berapa lama proses pencairan dana hasil penjualan UMKM ke rekening."
         listData.add(item3)
 
-        // 2. Mapping data ke layout item_bantuan.xml
+        //  Mapping data ke layout item_bantuan.xml
         val from = arrayOf("judul", "deskripsi")
         val to = intArrayOf(R.id.tvJudulBantuan, R.id.tvDeskripsiBantuan)
 
-        // 3. Terapkan SimpleAdapter
+        // SimpleAdapter
         val adapter = SimpleAdapter(this, listData, R.layout.item_bantuan, from, to)
         listViewBantuan.adapter = adapter
 

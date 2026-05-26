@@ -6,15 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
-// Pastikan import ini sesuai dengan folder tempat kamu membuat BantuanActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import com.example.rafif_atom.BantuanActivity
 import com.example.rafif_atom.Pertemuan2.KalkulatorActivity
 import com.example.rafif_atom.Pertemuan3.LoginActivity
 import com.example.rafif_atom.Pertemuan4.GetStartedActivity
 import com.example.rafif_atom.Pertemuan4.ProfileActivity
 import com.example.rafif_atom.Pertemuan5.WebViewActivity
+import com.example.rafif_atom.data.api.BeritaApiClient
 import com.example.rafif_atom.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -40,32 +44,26 @@ class HomeFragment : Fragment() {
             title = "Home"
         }
 
-        // 1. Navigasi ke Kalkulator
         binding.btnMenuKalkulator.setOnClickListener {
             startActivity(Intent(requireContext(), KalkulatorActivity::class.java))
         }
 
-        // 2. Navigasi ke Get Started
         binding.btnMenuCustom1.setOnClickListener {
             startActivity(Intent(requireContext(), GetStartedActivity::class.java))
         }
 
-        // 3. Navigasi ke Profile Activity
         binding.btnMenuCustom2.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileActivity::class.java))
         }
 
-        // 4. Navigasi ke Bina Desa (WebView)
         binding.btnMenuBinaDesa.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        // 5. TUGAS BARU: Navigasi ke Pusat Bantuan (ListView dll)
         binding.btnMenuBantuan.setOnClickListener {
             startActivity(Intent(requireContext(), BantuanActivity::class.java))
         }
 
-        // 6. Logout dan Hapus Sesi SharedPreferences
         binding.btnLogout.setOnClickListener { viewLogout ->
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Sign Out")
@@ -88,6 +86,29 @@ class HomeFragment : Fragment() {
                     Snackbar.make(viewLogout, "Batal keluar", Snackbar.LENGTH_SHORT).show()
                 }
                 .show()
+        }
+
+        // Panggil fungsi API saat fragment dibuat
+        loadBerita()
+    }
+
+    private fun loadBerita() {
+        lifecycleScope.launch {
+            try {
+                val response = BeritaApiClient.apiService.getBeritaUMKM()
+
+                // Cek apakah data tidak null
+                response.data?.let { listBerita ->
+                    // Ambil 10 berita saja agar tidak terlalu panjang
+                    val adapter = BeritaAdapter(listBerita.take(10))
+                    binding.rvBerita.adapter = adapter
+                    binding.rvBerita.layoutManager = LinearLayoutManager(requireContext())
+                }
+
+            } catch (e: Exception) {
+                // Menampilkan pesan error asli jika terjadi kendala jaringan/parsing
+                Toast.makeText(requireContext(), "Gagal memuat berita: ${e.message}", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
