@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.rafif_atom.About.AboutFragment
 import com.example.rafif_atom.Home.HomeFragment
 import com.example.rafif_atom.Profile.ProfileFragment
+// Tambahkan import FragmentNote
+import com.example.rafif_atom.Note.FragmentNote
 import com.example.rafif_atom.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -44,6 +46,14 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(ProfileFragment())
                     true
                 }
+
+                // 👇 TAHAP PENTING: Tambahkan navigasi Note di sini 👇
+                R.id.note -> {
+                    replaceFragment(FragmentNote())
+                    true
+                }
+                // 👆 ---------------------------------------------- 👆
+
                 else -> false
             }
         }

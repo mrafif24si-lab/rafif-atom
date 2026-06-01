@@ -82,6 +82,7 @@
                     android:src="@drawable/umkm" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- BARIS 1: Calculator & Get Started -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnMenuKalkulator"
                 android:layout_width="0dp"
@@ -183,6 +184,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- BARIS 2: Account & Web UMKM -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnMenuCustom2"
                 android:layout_width="0dp"
@@ -284,15 +286,17 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- BARIS 3 (BARU): Bantuan & Produk UMKM -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnMenuBantuan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 app:cardBackgroundColor="#F5B759"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnMenuProduk"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnMenuCustom2">
 
@@ -303,41 +307,88 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/bgIconBantuan"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
                         app:cardBackgroundColor="#ECFEFF"
-                        app:cardCornerRadius="24dp"
+                        app:cardCornerRadius="28dp"
                         app:cardElevation="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/tvBantuan"
-                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@android:drawable/ic_dialog_info"
                             app:tint="#06B6D4" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
-                        android:id="@+id/tvBantuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="Pusat Bantuan"
+                        android:layout_marginTop="12dp"
+                        android:text="Bantuan"
                         android:textColor="#1F2937"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/bgIconBantuan"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/bgIconBantuan"
-                        app:layout_constraintTop_toTopOf="@+id/bgIconBantuan" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bgIconBantuan" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMenuProduk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:cardBackgroundColor="#F5B759"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnMenuBantuan"
+                app:layout_constraintTop_toTopOf="@+id/btnMenuBantuan">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/bgIconProduk"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardBackgroundColor="#ECFEFF"
+                        app:cardCornerRadius="28dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@android:drawable/ic_menu_gallery"
+                            app:tint="#06B6D4" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Produk UMKM"
+                        android:textColor="#1F2937"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bgIconProduk" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- TOMBOL LOGOUT -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnLogout"
                 android:layout_width="0dp"
@@ -382,12 +433,13 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- BERITA UMKM -->
             <TextView
                 android:id="@+id/tvBeritaHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Berita UMKM Terkini"
+                android:text="Berita Terkini"
                 android:textColor="#1F2937"
                 android:textSize="18sp"
                 android:textStyle="bold"

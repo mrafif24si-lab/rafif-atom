@@ -1,6 +1,5 @@
 package com.example.rafif_atom.data.model
 
-// Menambahkan tanda tanya (?) agar aman jika API mengembalikan nilai null
 data class BeritaResponse(val data: List<BeritaModel>?)
 
 data class BeritaModel(

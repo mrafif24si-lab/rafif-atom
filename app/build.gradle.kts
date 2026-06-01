@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    // TAHAP PENTING: Tambahkan plugin KSP untuk Room
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -46,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     // ViewPager2 Dots Indicator
     implementation("com.tbuonomo:dotsindicator:5.1.0")
 
@@ -56,7 +59,14 @@ dependencies {
 
     // Glide untuk Load Gambar dari URL
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // TAHAP PENTING: Dependencies untuk Room Database
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
 }

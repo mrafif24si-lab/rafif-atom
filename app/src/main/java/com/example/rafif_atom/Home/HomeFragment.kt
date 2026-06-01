@@ -18,6 +18,7 @@ import com.example.rafif_atom.Pertemuan3.LoginActivity
 import com.example.rafif_atom.Pertemuan4.GetStartedActivity
 import com.example.rafif_atom.Pertemuan4.ProfileActivity
 import com.example.rafif_atom.Pertemuan5.WebViewActivity
+import com.example.rafif_atom.Pertemuan10.UmkmCatalogActivity
 import com.example.rafif_atom.data.api.BeritaApiClient
 import com.example.rafif_atom.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -62,6 +63,11 @@ class HomeFragment : Fragment() {
 
         binding.btnMenuBantuan.setOnClickListener {
             startActivity(Intent(requireContext(), BantuanActivity::class.java))
+        }
+
+        // TAHAP PERBAIKAN: Menambahkan fungsi klik untuk tombol Produk UMKM yang baru
+        binding.btnMenuProduk.setOnClickListener {
+            startActivity(Intent(requireContext(), UmkmCatalogActivity::class.java))
         }
 
         binding.btnLogout.setOnClickListener { viewLogout ->

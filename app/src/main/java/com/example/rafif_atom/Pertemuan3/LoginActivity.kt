@@ -1,5 +1,6 @@
 package com.example.rafif_atom.Pertemuan3
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.rafif_atom.BaseActivity
-import com.example.rafif_atom.InputEmailActivity // <--- IMPORT INI YANG DITAMBAHKAN
+import com.example.rafif_atom.InputEmailActivity
 import com.example.rafif_atom.databinding.ActivityLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -40,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             val inputUsername = binding.inputEmail.text.toString().trim()
             val inputPassword = binding.inputPassword.text.toString().trim()
 
-            // Mengambil data dari SharedPreferences
+            // Mengambil data dari SharedPreferences untuk cek user terdaftar
             val sharedPref = getSharedPreferences("DataUser", MODE_PRIVATE)
             val savedUsername = sharedPref.getString("username", "")
             val savedPassword = sharedPref.getString("password", "")
@@ -52,8 +53,12 @@ class LoginActivity : AppCompatActivity() {
             val kondisiDua = inputUsername.isNotEmpty() && (inputUsername == savedUsername) && (inputPassword == savedPassword)
 
             if (kondisiSatu || kondisiDua) {
-                // Login Berhasil -> Simpan state login dan arahkan ke BaseActivity
-                sharedPref.edit().putBoolean("isLogin", true).apply()
+                // ===============================================================
+                // TAHAP PERBAIKAN: Gunakan "user_pref" untuk menyimpan sesi login
+                // agar sinkron dengan SplashScreen dan tombol Logout
+                // ===============================================================
+                val sessionPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                sessionPref.edit().putBoolean("isLogin", true).apply()
 
                 val intent = Intent(this, BaseActivity::class.java)
                 startActivity(intent)
@@ -72,7 +77,6 @@ class LoginActivity : AppCompatActivity() {
 
         // --- SOAL A1: TOMBOL REGISTER WITH GMAIL ---
         binding.btnRegisterGmail.setOnClickListener {
-            // Error sebelumnya terjadi di sini karena kurang import di atas
             val intent = Intent(this, InputEmailActivity::class.java)
             startActivity(intent)
         }
