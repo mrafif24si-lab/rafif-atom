@@ -65,7 +65,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), BantuanActivity::class.java))
         }
 
-        // TAHAP PERBAIKAN: Menambahkan fungsi klik untuk tombol Produk UMKM yang baru
         binding.btnMenuProduk.setOnClickListener {
             startActivity(Intent(requireContext(), UmkmCatalogActivity::class.java))
         }

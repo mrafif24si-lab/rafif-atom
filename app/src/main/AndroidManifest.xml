@@ -23,7 +23,7 @@
             android:name=".Note.NoteFormActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".onboarding.OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".BantuanActivity"
@@ -32,7 +32,7 @@
             android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".onboarding.OnboardingActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

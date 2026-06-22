@@ -17,7 +17,6 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tangkap email dari halaman sebelumnya
         val emailIntent = intent.getStringExtra("EXTRA_EMAIL")
         binding.etEmailTerisi.setText(emailIntent)
 

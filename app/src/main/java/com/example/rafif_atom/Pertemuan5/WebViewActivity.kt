@@ -31,7 +31,6 @@ class WebViewActivity : AppCompatActivity() {
 
         webView.loadUrl("https://umkm-guest.alwaysdata.net")
 
-        // 3. Logika Hide/Show Toolbar saat Web di-scroll
         webView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
             if (scrollY > oldScrollY) {
                 appBarLayout.setExpanded(false, true) // Sembunyikan saat scroll ke bawah
@@ -41,7 +40,7 @@ class WebViewActivity : AppCompatActivity() {
         }
     }
 
-    // 4. Mengambil alih tombol back bawaan HP agar kembali ke history web, bukan langsung keluar aplikasi
+
     override fun onBackPressed() {
         val webView = findViewById<WebView>(R.id.webViewBinaDesa)
         if (webView.canGoBack()) {
@@ -51,10 +50,10 @@ class WebViewActivity : AppCompatActivity() {
         }
     }
 
-    // 5. Mengaktifkan fungsi tombol panah back di Toolbar
+
     override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            onBackPressed() // Memanggil fungsi onBackPressed di atas
+            onBackPressed()
             return true
         }
         return super.onOptionsItemSelected(item)

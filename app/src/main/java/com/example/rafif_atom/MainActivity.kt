@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, WebViewActivity::class.java))
         }
 
-        // 5. Logout dan Hapus Sesi SharedPreferences
         btnLogout.setOnClickListener { view ->
             MaterialAlertDialogBuilder(this)
                 .setTitle("Sign Out")

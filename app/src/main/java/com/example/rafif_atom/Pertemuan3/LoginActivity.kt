@@ -36,17 +36,15 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // --- SOAL A3: LOGIC LOGIN ---
         binding.btnLogin.setOnClickListener {
             val inputUsername = binding.inputEmail.text.toString().trim()
             val inputPassword = binding.inputPassword.text.toString().trim()
 
-            // Mengambil data dari SharedPreferences untuk cek user terdaftar
             val sharedPref = getSharedPreferences("DataUser", MODE_PRIVATE)
             val savedUsername = sharedPref.getString("username", "")
             val savedPassword = sharedPref.getString("password", "")
 
-            // Kondisi 1: username == password (syarat dari praktikum)
+
             val kondisiSatu = inputUsername.isNotEmpty() && (inputUsername == inputPassword)
 
             // Kondisi 2: username dan password sesuai dengan SharedPreferences

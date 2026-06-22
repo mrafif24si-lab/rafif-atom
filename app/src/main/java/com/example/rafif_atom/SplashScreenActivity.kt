@@ -12,8 +12,6 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-
-        // Jalankan coroutine untuk delay 2 detik
         lifecycleScope.launch {
             delay(2000)
 
@@ -31,7 +29,6 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            // Hancurkan halaman splash
             finish()
         }
     }
