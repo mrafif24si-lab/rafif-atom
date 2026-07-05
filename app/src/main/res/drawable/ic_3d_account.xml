@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Bayangan 3D Kepala & Badan -->
+    <path android:fillColor="#047857" android:pathData="M28,20 A8,8 0 1,0 28,4 A8,8 0 0,0 28,20 Z"/>
+    <path android:fillColor="#047857" android:pathData="M16,42 C16,34 22,30 28,30 C34,30 40,34 40,42 Z"/>
+    <!-- Bodi Utama Kepala & Badan -->
+    <path android:fillColor="#10B981" android:pathData="M24,18 A8,8 0 1,0 24,2 A8,8 0 0,0 24,18 Z"/>
+    <path android:fillColor="#10B981" android:pathData="M12,40 C12,32 18,28 24,28 C30,28 36,32 36,40 Z"/>
+    <!-- Aksen Terang -->
+    <path android:fillColor="#A7F3D0" android:pathData="M24,15 A5,5 0 1,0 24,5 A5,5 0 0,0 24,15 Z"/>
+</vector>

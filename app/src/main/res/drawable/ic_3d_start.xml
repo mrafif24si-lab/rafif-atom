@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Bayangan 3D -->
+    <path android:fillColor="#3730A3" android:pathData="M18,14 l20,12 l-20,12 z"/>
+    <!-- Bodi Utama -->
+    <path android:fillColor="#6366F1" android:pathData="M14,10 l20,12 l-20,12 z"/>
+    <!-- Aksen Terang -->
+    <path android:fillColor="#C7D2FE" android:pathData="M16,14 l10,6 l-10,6 z"/>
+</vector>

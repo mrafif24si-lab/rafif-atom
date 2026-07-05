@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Bayangan 3D Lingkaran -->
+    <path android:fillColor="#BE185D" android:pathData="M28,28 m-16,0 a16,16 0 1,1 32,0 a16,16 0 1,1 -32,0"/>
+    <!-- Bodi Utama Lingkaran -->
+    <path android:fillColor="#EC4899" android:pathData="M24,24 m-16,0 a16,16 0 1,1 32,0 a16,16 0 1,1 -32,0"/>
+    <!-- Tanda Titik 'i' -->
+    <path android:fillColor="#FFFFFF" android:pathData="M22,12 h4 v4 h-4 z"/>
+    <!-- Tanda Batang 'i' -->
+    <path android:fillColor="#FFFFFF" android:pathData="M22,20 h4 v12 h-4 z"/>
+</vector>

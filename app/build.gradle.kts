@@ -64,6 +64,17 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // CameraX untuk Scan Kamera
+    implementation("androidx.camera:camera-camera2:1.3.3")
+    implementation("androidx.camera:camera-lifecycle:1.3.3")
+    implementation("androidx.camera:camera-view:1.3.3")
+
+    // ML Kit untuk QR code scanner
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    // ZXing untuk Generate QR Code
+    implementation("com.google.zxing:core:3.5.2")
+
     // TAHAP PENTING: Dependencies untuk Room Database
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")

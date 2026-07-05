@@ -69,6 +69,11 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), UmkmCatalogActivity::class.java))
         }
 
+        binding.btnMenuPertemuan13.setOnClickListener {
+            val intent = Intent(requireContext(), com.example.rafif_atom.pertemuan_13.ThirteenthActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLogout.setOnClickListener { viewLogout ->
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle("Sign Out")

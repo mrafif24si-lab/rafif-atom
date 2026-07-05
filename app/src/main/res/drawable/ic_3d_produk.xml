@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Bayangan 3D Bingkai -->
+    <path android:fillColor="#4C1D95" android:pathData="M12,14 h28 v24 h-28 z"/>
+    <!-- Bodi Utama Bingkai -->
+    <path android:fillColor="#8B5CF6" android:pathData="M8,10 h28 v24 h-28 z"/>
+    <!-- Matahari/Bulan -->
+    <path android:fillColor="#FDE047" android:pathData="M14,16 A3,3 0 1,0 20,16 A3,3 0 0,0 14,16 Z"/>
+    <!-- Gunung 1 (Belakang) -->
+    <path android:fillColor="#C4B5FD" android:pathData="M8,34 L18,20 L28,34 Z"/>
+    <!-- Gunung 2 (Depan) -->
+    <path android:fillColor="#FFFFFF" android:pathData="M18,34 L26,24 L36,34 Z"/>
+</vector>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <!-- Bayangan 3D -->
+    <path android:fillColor="#0369A1" android:pathData="M14,12 h24 v32 h-24 z"/>
+    <!-- Bodi Utama -->
+    <path android:fillColor="#06B6D4" android:pathData="M10,8 h24 v32 h-24 z"/>
+    <!-- Layar -->
+    <path android:fillColor="#CFFAFE" android:pathData="M14,12 h16 v8 h-16 z"/>
+    <!-- Tombol-tombol -->
+    <path android:fillColor="#FFFFFF" android:pathData="M14,24 h4 v4 h-4 z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M20,24 h4 v4 h-4 z"/>
+    <path android:fillColor="#FDE047" android:pathData="M26,24 h4 v10 h-4 z"/> <!-- Tombol Kuning -->
+    <path android:fillColor="#FFFFFF" android:pathData="M14,30 h4 v4 h-4 z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M20,30 h4 v4 h-4 z"/>
+</vector>
