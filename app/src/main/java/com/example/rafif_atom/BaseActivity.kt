@@ -29,7 +29,7 @@ class BaseActivity : AppCompatActivity() {
 
         replaceFragment(HomeFragment())
 
-        binding.bottomNavView.setOnItemSelectedListener {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
                     replaceFragment(HomeFragment())

@@ -40,24 +40,24 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as androidx.appcompat.app.AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as androidx.appcompat.app.AppCompatActivity).supportActionBar?.apply {
-            title = "Home"
-        }
+        // Kodingan pemanggilan toolbar dihapus karena di UI baru sudah tidak memakai toolbar
 
         binding.btnMenuKalkulator.setOnClickListener {
             startActivity(Intent(requireContext(), KalkulatorActivity::class.java))
         }
 
-        binding.btnMenuCustom1.setOnClickListener {
+        // ID disesuaikan dengan XML baru
+        binding.btnMenuStarted.setOnClickListener {
             startActivity(Intent(requireContext(), GetStartedActivity::class.java))
         }
 
-        binding.btnMenuCustom2.setOnClickListener {
+        // ID disesuaikan dengan XML baru
+        binding.btnMenuAccount.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileActivity::class.java))
         }
 
-        binding.btnMenuBinaDesa.setOnClickListener {
+        // ID disesuaikan dengan XML baru
+        binding.btnMenuWeb.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), UmkmCatalogActivity::class.java))
         }
 
+        // Tombol Pertemuan 13 (Kamera & QR)
         binding.btnMenuPertemuan13.setOnClickListener {
             val intent = Intent(requireContext(), com.example.rafif_atom.pertemuan_13.ThirteenthActivity::class.java)
             startActivity(intent)
@@ -81,10 +82,15 @@ class HomeFragment : Fragment() {
                 .setPositiveButton("Logout") { dialog, _ ->
                     dialog.dismiss()
 
+                    // 1. Hapus sesi login
                     val sharedPref = requireActivity().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
                     sharedPref.edit {
                         clear()
                     }
+
+                    // 2. Reset Onboarding agar muncul lagi setelah logout (sesuai request kamu sebelumnya)
+                    val onboardPref = requireActivity().getSharedPreferences("onboarding_pref", Context.MODE_PRIVATE)
+                    onboardPref.edit().putBoolean("isFirstTime", true).apply()
 
                     val intent = Intent(requireContext(), LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

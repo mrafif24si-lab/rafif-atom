@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#EA580C"
+        android:background="@drawable/bg_header_gradient"
         app:title="Fitur Kamera &amp; QR"
         app:titleTextColor="#FFFFFF"
         app:navigationIcon="@android:drawable/ic_menu_revert" />
@@ -19,8 +19,8 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="#EA580C"
-        app:tabSelectedTextColor="#EA580C"
+        app:tabIndicatorColor="#F97316"
+        app:tabSelectedTextColor="#F97316"
         app:tabTextColor="#64748B" />
 
     <androidx.viewpager2.widget.ViewPager2

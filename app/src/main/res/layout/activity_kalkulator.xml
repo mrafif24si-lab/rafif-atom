@@ -11,10 +11,10 @@
         android:id="@+id/toolbarKalkulator"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        android:background="@drawable/bg_header_gradient"
         android:elevation="4dp"
         app:title="Kalkulator"
-        app:titleTextColor="#333333" />
+        app:titleTextColor="@android:color/white" />
 
     <ScrollView
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -26,15 +27,26 @@ class TabCaptureFragment : Fragment() {
         if (result.resultCode == Activity.RESULT_OK) {
             currentPhotoUri?.let { uri ->
                 binding.ivCapturedImage.setImageURI(uri)
+                // Memindai media agar muncul di galeri perangkat
                 context?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
                 Toast.makeText(requireContext(), "Foto tersimpan di Galeri!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        if (isGranted) openCamera()
-        else Toast.makeText(context, "Izin kamera diperlukan", Toast.LENGTH_SHORT).show()
+    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+        val cameraGranted = permissions[Manifest.permission.CAMERA] ?: false
+        val storageGranted = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: false
+        } else {
+            true
+        }
+
+        if (cameraGranted && storageGranted) {
+            openCamera()
+        } else {
+            Toast.makeText(context, "Izin kamera dan penyimpanan diperlukan", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -45,13 +57,27 @@ class TabCaptureFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCapture.setOnClickListener {
-            if (hasCameraPermission()) openCamera()
-            else permissionLauncher.launch(Manifest.permission.CAMERA)
+            checkPermissionsAndOpenCamera()
         }
     }
 
-    private fun hasCameraPermission(): Boolean {
-        return ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+    private fun checkPermissionsAndOpenCamera() {
+        val hasCamera = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        val hasStorage = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+
+        if (hasCamera && hasStorage) {
+            openCamera()
+        } else {
+            val permissions = mutableListOf(Manifest.permission.CAMERA)
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+            permissionLauncher.launch(permissions.toTypedArray())
+        }
     }
 
     private fun openCamera() {
@@ -66,7 +92,9 @@ class TabCaptureFragment : Fragment() {
         val values = ContentValues().apply {
             put(MediaStore.Images.Media.DISPLAY_NAME, "IMG_${System.currentTimeMillis()}.jpg")
             put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${folderName}")
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${folderName}")
+            }
         }
         return requireContext().contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
             ?: throw RuntimeException("Gagal membuat URI MediaStore")

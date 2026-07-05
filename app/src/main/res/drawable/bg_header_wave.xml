@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="100dp"
-    android:height="100dp"
+    android:height="30dp"
     android:viewportWidth="100"
-    android:viewportHeight="100">
+    android:viewportHeight="30">
 
     <!-- Model Wave dari Dosen yang dimodifikasi warnanya -->
     <path
-        android:fillColor="#E69527"
+        android:fillColor="#F5B759"
         android:pathData="
             M0,0
             L100,0
-            L100,40
-            C 75,55
-              25,20
-              0,40
+            L100,20
+            C 75,10
+              25,30
+              0,20
             Z" />
 </vector>

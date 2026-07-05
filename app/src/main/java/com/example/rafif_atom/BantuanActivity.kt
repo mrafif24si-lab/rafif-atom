@@ -14,6 +14,18 @@ class BantuanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bantuan)
 
+        // Setup Toolbar
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbarBantuan)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+        toolbar.navigationIcon?.setColorFilter(
+            androidx.core.content.ContextCompat.getColor(this, android.R.color.white),
+            android.graphics.PorterDuff.Mode.SRC_ATOP
+        )
+
         val listViewBantuan = findViewById<ListView>(R.id.listViewBantuan)
         val btnKirim = findViewById<MaterialButton>(R.id.btnKirimPertanyaan)
         val chipGroup = findViewById<ChipGroup>(R.id.chipGroupFilter)
@@ -53,5 +65,13 @@ class BantuanActivity : AppCompatActivity() {
         btnKirim.setOnClickListener {
             Toast.makeText(this, "Pertanyaan berhasil dikirim ke tim Bina Desa!", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

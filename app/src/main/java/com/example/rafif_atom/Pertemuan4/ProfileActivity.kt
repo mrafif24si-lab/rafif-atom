@@ -34,7 +34,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         toolbar.navigationIcon?.setColorFilter(
-            ContextCompat.getColor(this, android.R.color.black),
+            ContextCompat.getColor(this, android.R.color.white),
             PorterDuff.Mode.SRC_ATOP
         )
     }

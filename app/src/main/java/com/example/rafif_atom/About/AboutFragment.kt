@@ -29,6 +29,14 @@ class AboutFragment : Fragment() {
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = "About UMKM" // Judul di Toolbar
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
+        // Ikon back dialihkan ke menu Home di BottomNavigationView agar tidak menutup aplikasi
+        binding.toolbar.setNavigationOnClickListener {
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(com.example.rafif_atom.R.id.bottom_navigation)
+            bottomNav?.selectedItemId = com.example.rafif_atom.R.id.nav_home
         }
     }
 

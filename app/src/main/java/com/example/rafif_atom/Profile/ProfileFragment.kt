@@ -24,8 +24,12 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup Toolbar
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Profil Pengembang"
+        binding.toolbar.title = "Profil Pengembang"
+        binding.toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
+        binding.toolbar.setNavigationOnClickListener {
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(com.example.rafif_atom.R.id.bottom_navigation)
+            bottomNav?.selectedItemId = com.example.rafif_atom.R.id.nav_home
+        }
 
         // Logika Klik Sosial Media
         binding.btnLinkedin.setOnClickListener { openUrl("https://linkedin.com/in/rafifzidane") }

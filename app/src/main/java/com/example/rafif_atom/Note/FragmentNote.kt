@@ -42,9 +42,21 @@ class FragmentNote : Fragment() {
         binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())
         binding.rvNotes.adapter = adapter
 
-        // Memberikan garis pemisah antar baris catatan
-        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        binding.rvNotes.addItemDecoration(dividerItemDecoration)
+        // Memberikan padding bawah tambahan (sudah ada di XML via clipToPadding="false")
+
+        // Terapkan Toolbar
+        (requireActivity() as androidx.appcompat.app.AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (requireActivity() as androidx.appcompat.app.AppCompatActivity).supportActionBar?.apply {
+            title = "Buku Catatan UMKM"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
+        // Ikon back dialihkan ke menu Home di BottomNavigationView agar tidak menutup aplikasi
+        binding.toolbar.setNavigationOnClickListener {
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(com.example.rafif_atom.R.id.bottom_navigation)
+            bottomNav?.selectedItemId = com.example.rafif_atom.R.id.nav_home
+        }
 
         // Tombol Fab untuk pindah ke Form
         binding.fabAddNote.setOnClickListener {

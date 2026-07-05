@@ -1,27 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center">
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edtQrInput"
+    android:gravity="center"
+    android:background="#F8FAFC">
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan teks / ID Produk"
-        android:inputType="text" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="#F97316"
+        app:hintTextColor="#F97316">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtQrInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan teks / ID Produk"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGenerate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Generate QR" />
-    <ImageView
-        android:id="@+id/ivQrCode"
+        android:text="Generate QR"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="12dp"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#FDBA74"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_marginTop="24dp"
-        android:background="#f0f0f0"
-        android:scaleType="center" />
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/ivQrCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:padding="16dp"/>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
